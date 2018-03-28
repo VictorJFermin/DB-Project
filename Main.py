@@ -33,12 +33,12 @@ def getUserById(user_id):
 @app.route('/Users/Memberships')
 def memberships():
     handler = MembershipHandler()
-    return handler.getAllMemberships()
+    return handler.getAllMemberships2()
 
 @app.route('/Users/Memberships/<int:user_id>')
 def membershipsByUID(user_id):
     handler = MembershipHandler()
-    return handler.getMembershipByUID(user_id)
+    return handler.getMembershipByUID2(user_id)
 
 @app.route('/Users/Reactions/<int:user_id>')
 def getReactionsByUID(user_id):
@@ -84,7 +84,7 @@ def chats():
 @app.route('/GroupChats/Memberships/<int:chat_id>')
 def membershipsByChatID(chat_id):
     handler = MembershipHandler()
-    return handler.getMembershipByChatID(chat_id)
+    return handler.getMembershipByChatID2(chat_id)
 
 
 @app.route('/GroupChats/<int:chat_id>')

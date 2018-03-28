@@ -1,12 +1,12 @@
 class MemberDAO:
     def __init__(self):
-        Mem1 = [1,28,1]
-        Mem2 = [2,100,1]
-        Mem3 = [3,134,1]
-        Mem4 = [4,200,1]
-        Mem5 = [5, 28, 2]
-        Mem6 = [6, 100, 2]
-        Mem7 = [7, 134, 2]
+        Mem1 = [28,1]
+        Mem2 = [100,1]
+        Mem3 = [134,1]
+        Mem4 = [200,1]
+        Mem5 = [28, 2]
+        Mem6 = [100, 2]
+        Mem7 = [134, 2]
 
         self.data = []
         self.data.append(Mem1)
@@ -20,22 +20,22 @@ class MemberDAO:
     def getAllMemberships(self):
         return self.data
 
-    def getMembershipByID(self, id):
-        for r in self.data:
-            if id == r[0]:
-                return r
-            return None
+   # def getMembershipByID(self, id):
+    #    for r in self.data:
+     #       if id == r[0]:
+      #          return r
+       #     return None
 
     def getMembershipByChatID(self, chat_id):
         result = []
         for r in self.data:
-            if chat_id == r[2]:
+            if chat_id == r[1]:
                 result.append(r)
         return result
 
     def getMembershipByUserID(self, user_id):
         result = []
         for r in self.data:
-            if user_id == r[1]:
+            if user_id == r[0]:
                 result.append(r)
         return result
