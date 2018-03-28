@@ -56,25 +56,25 @@ def getMessagesByUID(user_id):
 @app.route('/Users/Messages/Replies')
 def getReplies():
     handler = ReplyHandler()
-    return handler.getAllReplies()
+    return handler.getAllReplies2()
 
 @app.route('/Users/Messages/Replies/<int:owner_id>')
 def getRepliesByOwnerID(owner_id):
     handler = ReplyHandler()
-    return handler.findByOwnerID(owner_id)
+    return handler.findByOwnerID2(owner_id)
 
 
 
 @app.route('/Replies/<int:rep_id>')
 def getRepliesByID(rep_id):
     handler = ReplyHandler()
-    return handler.getReplyByID(rep_id)
+    return handler.getReplyByID2(rep_id)
 
 
-@app.route('/Memberships/<int:mem_id>')
-def membershipsByMembershipID(mem_id):
-    handler = MembershipHandler()
-    return handler.getMembershipsByID(mem_id)
+#@app.route('/Memberships/<int:mem_id>')
+#def membershipsByMembershipID(mem_id):
+ #   handler = MembershipHandler()
+  #  return handler.getMembershipsByID(mem_id)
 
 @app.route('/GroupChats')
 def chats():
@@ -115,7 +115,7 @@ def getChatMessages(chat_id):
 @app.route('/GroupChats/Messages/Replies/<int:message_id>')
 def getRepliesByMessageID(message_id):
     handler = ReplyHandler()
-    return handler.findMessagesReplies(message_id)
+    return handler.findMessagesReplies2(message_id)
 
 @app.route('/Reactions')
 def getReactions():
