@@ -2,6 +2,7 @@ from flask import Flask, request
 
 from handler.members import MembershipHandler
 from handler.reactions import ReactionsHandler
+from handler.replies import ReplyHandler
 from handler.users import UsersHandler
 from handler.chats import ChatsHandler
 from handler.messages import MessageHandler
@@ -52,6 +53,24 @@ def getMessages():
 def getMessagesByUID(user_id):
     return MessageHandler().findUserMessages(user_id)
 
+@app.route('/Users/Messages/Replies')
+def getReplies():
+    handler = ReplyHandler()
+    return handler.getAllReplies()
+
+@app.route('/Users/Messages/Replies/<int:owner_id>')
+def getRepliesByOwnerID(owner_id):
+    handler = ReplyHandler()
+    return handler.findByOwnerID(owner_id)
+
+
+
+@app.route('/Replies/<int:rep_id>')
+def getRepliesByID(rep_id):
+    handler = ReplyHandler()
+    return handler.getReplyByID(rep_id)
+
+
 @app.route('/Memberships/<int:mem_id>')
 def membershipsByMembershipID(mem_id):
     handler = MembershipHandler()
@@ -93,6 +112,11 @@ def getMessageById(message_id):
 def getChatMessages(chat_id):
     return MessageHandler().findChatMessages(chat_id)
 
+@app.route('/GroupChats/Messages/Replies/<int:message_id>')
+def getRepliesByMessageID(message_id):
+    handler = ReplyHandler()
+    return handler.findMessagesReplies(message_id)
+
 @app.route('/Reactions')
 def getReactions():
     handler = ReactionsHandler()
@@ -102,6 +126,9 @@ def getReactions():
 @app.route('/Reactions/<int:r_id>')
 def getReactionsByID(r_id):
     return ReactionsHandler().getReactionsByID(r_id)
+
+
+
 
 
 if __name__ == '__main__':
